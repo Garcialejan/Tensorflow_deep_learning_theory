@@ -286,3 +286,27 @@ def calculate_results(y_true, y_pred):
                   "recall": model_recall,
                   "f1": model_f1}
   return model_results
+
+
+# Calculate the time of predictions
+import time
+def pred_timer(model, samples):
+  """
+  Times how long a model takes to make predictions on samples.
+  
+  Args:
+  ----
+  model = a trained model
+  sample = a list of samples
+
+  Returns:
+  ----
+  total_time = total elapsed time for model to make predictions on samples
+  time_per_pred = time in seconds per single sample
+  """
+  start_time = time.perf_counter() # get start time
+  model.predict(samples) # make predictions
+  end_time = time.perf_counter() # get finish time
+  total_time = end_time-start_time # calculate how long predictions took to make
+  time_per_pred = total_time/len(samples) # find prediction time per sample
+  return total_time, time_per_pred
