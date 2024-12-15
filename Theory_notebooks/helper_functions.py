@@ -288,7 +288,7 @@ def calculate_results(y_true, y_pred):
   return model_results
 
 
-# Calculate the time of predictions
+
 import time
 def pred_timer(model, samples):
   """
@@ -310,3 +310,26 @@ def pred_timer(model, samples):
   total_time = end_time-start_time # calculate how long predictions took to make
   time_per_pred = total_time/len(samples) # find prediction time per sample
   return total_time, time_per_pred
+
+
+
+def plot_time_series(timesteps, values, format='.', start=0, end=None, label=None):
+  """
+  Plots a timesteps (a series of points in time) against values (a series of values across timesteps).
+  
+  Parameters
+  ---------
+  timesteps : array of timesteps
+  values : array of values across time
+  format : style of plot, default "."
+  start : where to start the plot (setting a value will index from start of timesteps & values)
+  end : where to end the plot (setting a value will index from end of timesteps & values)
+  label : label to show on plot of values
+  """
+  # Plot the series
+  plt.plot(timesteps[start:end], values[start:end], format, label=label)
+  plt.xlabel("Time")
+  plt.ylabel("BTC Price")
+  if label:
+    plt.legend(fontsize=14, loc = "upper left") # make label bigger
+  plt.grid(True)
