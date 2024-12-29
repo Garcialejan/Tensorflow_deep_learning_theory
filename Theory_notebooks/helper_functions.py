@@ -422,3 +422,18 @@ def evaluate_preds(y_true, y_pred):
           "rmse": rmse.numpy(),
           "mape": mape.numpy(),
           "mase": mase.numpy()}
+  
+  
+# Find upper and lower bounds of predictions
+def get_upper_lower(preds): # 1. Take the predictions of multiple randomly initialized deep learning neural networks
+  
+  # 2. Measure the standard deviation of the predictions
+  std = tf.math.reduce_std(preds, axis=0)
+  
+  # 3. Multiply the standard deviation by 1.96
+  interval = 1.96 * std # https://en.wikipedia.org/wiki/1.96 
+
+  # 4. Get the prediction interval upper and lower bounds
+  preds_mean = tf.reduce_mean(preds, axis=0)
+  lower, upper = preds_mean - interval, preds_mean + interval
+  return lower, upper
