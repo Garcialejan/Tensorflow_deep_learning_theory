@@ -1,7 +1,5 @@
 # TensorFlow Deep Dive: Theory and Implementation
 
-# TensorFlow Deep Dive: Theory and Implementation
-
 Welcome to the **TensorFlow Deep Dive** repository, a collection of theoretical and practical notebooks that cover fundamental and advanced TensorFlow concepts to solve Machine Learning problems. This repository is organized to facilitate progressive learning and the application of advanced techniques in various domains.
 
 ---
